@@ -22,12 +22,12 @@ public class RestController {
         this.ioService = ioService;
     }
 
-    @GetMapping("/image")
+    @PostMapping("/image")
     public ResponseEntity<List<String>> getImg(@RequestBody String url) {
         return new ResponseEntity<>(urlService.getURL(url, false), HttpStatus.OK);
     }
 
-    @GetMapping(
+    @PostMapping(
             value = "/image/download",
             produces = MediaType.IMAGE_JPEG_VALUE
     )
@@ -35,7 +35,7 @@ public class RestController {
         return ioService.downloadImg(url);
     }
 
-    @GetMapping("/video")
+    @PostMapping("/video")
     public ResponseEntity<List<String>> getVideo(@RequestBody String url) {
         return new ResponseEntity<>(urlService.getURL(url, true), HttpStatus.OK);
     }
